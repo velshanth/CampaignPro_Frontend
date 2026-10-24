@@ -88,14 +88,14 @@ const MainApp: React.FC = () => {
   };
 
   const handleTabChange = (tab: string) => {
+    if (selectedCampaign) {
+      dispatch(clearSelectedCampaign());
+    }
     if (!isAdmin && (tab === 'dashboard' || tab === 'analytics')) {
       setActiveTab('campaigns');
       return;
     }
     setActiveTab(tab);
-    if (selectedCampaign) {
-      dispatch(clearSelectedCampaign());
-    }
   };
 
   return (

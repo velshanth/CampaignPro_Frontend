@@ -138,6 +138,32 @@ export const CampaignDetails: React.FC<CampaignDetailViewProps> = ({
         </div>
       </div>
 
+      <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-5">
+        <h2 className="text-sm font-bold text-slate-900 mb-3">Campaign Content</h2>
+        <div className="space-y-3">
+          <div>
+            <span className="text-xs font-bold text-slate-500 uppercase tracking-wide block mb-1">
+              Campaign Name
+            </span>
+            <p className="text-sm text-slate-900 font-medium">{campaign.name}</p>
+          </div>
+          <div>
+            <span className="text-xs font-bold text-slate-500 uppercase tracking-wide block mb-1">
+              Subject Line
+            </span>
+            <p className="text-sm text-slate-900 font-medium">{campaign.subject}</p>
+          </div>
+          <div>
+            <span className="text-xs font-bold text-slate-500 uppercase tracking-wide block mb-1">
+              Email Body
+            </span>
+            <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
+              <p className="text-sm text-slate-700 whitespace-pre-wrap leading-relaxed">{campaign.body}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {campaign.status === 'SCHEDULED' && (
         <div className="bg-gradient-to-r from-blue-50 via-indigo-50/60 to-blue-50 border border-blue-200/90 rounded-2xl p-4 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-start gap-3.5">

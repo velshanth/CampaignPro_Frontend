@@ -29,6 +29,8 @@ export const AddCampaign: React.FC<CampaignWizardModalProps> = ({
   const [scheduledDateTime, setScheduledDateTime] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
+  const [originalTemplateSubject, setOriginalTemplateSubject] = useState('');
+  const [originalTemplateBody, setOriginalTemplateBody] = useState('');
 
   const allAvailableTemplates = Array.from(
     new Map([...defaultTemplates, ...templates].map((t) => [t.id, t])).values()
@@ -61,15 +63,21 @@ export const AddCampaign: React.FC<CampaignWizardModalProps> = ({
           setSelectedTemplateId(found.id);
           setSubject(found.subject);
           setBody(found.body);
+          setOriginalTemplateSubject(found.subject);
+          setOriginalTemplateBody(found.body);
         } else {
           setSelectedTemplateId('');
           setSubject('');
           setBody('');
+          setOriginalTemplateSubject('');
+          setOriginalTemplateBody('');
         }
       } else {
         setSelectedTemplateId('');
         setSubject('');
         setBody('');
+        setOriginalTemplateSubject('');
+        setOriginalTemplateBody('');
       }
     }
   }, [isOpen, initialTemplateId, groups]);
@@ -83,7 +91,12 @@ export const AddCampaign: React.FC<CampaignWizardModalProps> = ({
       if (found) {
         setSubject(found.subject);
         setBody(found.body);
+        setOriginalTemplateSubject(found.subject);
+        setOriginalTemplateBody(found.body);
       }
+    } else {
+      setOriginalTemplateSubject('');
+      setOriginalTemplateBody('');
     }
   };
 
@@ -140,10 +153,14 @@ export const AddCampaign: React.FC<CampaignWizardModalProps> = ({
     try {
       const scheduledTimeValue = dispatchType === 'schedule' ? scheduledDateTime : null;
 
+      const isContentModified = 
+        selectedTemplateId && 
+        (subject.trim() !== originalTemplateSubject || body.trim() !== originalTemplateBody);
+
       const created = await dispatch(
         createCampaign({
           name: name.trim(),
-          templateId: selectedTemplateId || undefined,
+          templateId: selectedTemplateId && !isContentModified ? selectedTemplateId : undefined,
           contactIds: targetContactIds,
           groupIds: targetGroup && targetGroup !== 'ALL' ? [targetGroup] : [],
           scheduledTime: scheduledTimeValue,

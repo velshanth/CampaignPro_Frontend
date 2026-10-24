@@ -58,11 +58,9 @@ export const Contacts: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border-slate-200">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-slate-900">
-            Contacts & Audiences
+            Contacts
           </h1>
           <div className="flex items-center gap-2 text-xs text-slate-500 mt-1">
-            <span>Centralized subscriber directory</span>
-            <span aria-hidden="true">·</span>
             <span className="font-mono tabular-nums">{contacts.length} total contacts</span>
             <span aria-hidden="true">·</span>
             <span className="font-mono tabular-nums">{groups.length} groups</span>
@@ -158,14 +156,13 @@ export const Contacts: React.FC = () => {
                 <th className="px-4 py-3">Phone</th>
                 <th className="px-4 py-3">Audience Groups</th>
                 <th className="px-4 py-3">Company / Title</th>
-                <th className="px-4 py-3">Status</th>
                 <th className="px-5 py-3 text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 text-slate-700">
               {filteredContacts.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="text-center py-12 text-slate-400">
+                  <td colSpan={6} className="text-center py-12 text-slate-400">
                     <p className="text-sm font-medium text-slate-600">No contacts found</p>
                     <p className="text-xs text-slate-400 mt-1">
                       {searchQuery
@@ -233,13 +230,6 @@ export const Contacts: React.FC = () => {
                       ) : (
                         <span className="text-slate-400">—</span>
                       )}
-                    </td>
-
-                    {/* Status */}
-                    <td className="px-4 py-3.5 whitespace-nowrap font-medium text-[11px]">
-                      <span className={c.active ? 'text-emerald-700' : 'text-slate-400'}>
-                        {c.active ? '● Active' : '○ Inactive'}
-                      </span>
                     </td>
 
                     {/* Actions */}

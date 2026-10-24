@@ -23,7 +23,6 @@ export const AddContact: React.FC<ContactModalProps> = ({
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [selectedGroup, setSelectedGroup] = useState('');
-  const [active, setActive] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -33,14 +32,12 @@ export const AddContact: React.FC<ContactModalProps> = ({
       setEmail(contactToEdit.email);
       setPhone(contactToEdit.phone || '');
       setSelectedGroup(contactToEdit.groups && contactToEdit.groups[0] ? contactToEdit.groups[0] : '');
-      setActive(contactToEdit.active);
     } else {
       setFirstName('');
       setLastName('');
       setEmail('');
       setPhone('');
       setSelectedGroup(groups[0]?.name || '');
-      setActive(true);
     }
     setError(null);
   }, [contactToEdit, isOpen, groups]);
@@ -68,7 +65,7 @@ export const AddContact: React.FC<ContactModalProps> = ({
               email: email.trim(),
               phone: phone.trim() || undefined,
               groups: groupList,
-              active,
+              active: true,
             },
           })
         ).unwrap();
@@ -80,7 +77,7 @@ export const AddContact: React.FC<ContactModalProps> = ({
             email: email.trim(),
             phone: phone.trim() || undefined,
             groups: groupList,
-            active,
+            active: true,
           })
         ).unwrap();
       }
@@ -196,18 +193,6 @@ export const AddContact: React.FC<ContactModalProps> = ({
                 </option>
               ))}
             </select>
-          </div>
-
-          <div className="pt-2">
-            <label className="flex items-center gap-2 cursor-pointer text-slate-800">
-              <input
-                type="checkbox"
-                checked={active}
-                onChange={(e) => setActive(e.target.checked)}
-                className="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500"
-              />
-              <span className="font-medium">Active Subscriber</span>
-            </label>
           </div>
 
           <div className="pt-4 flex items-center justify-end gap-2 border-t border-slate-100">
