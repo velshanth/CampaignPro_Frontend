@@ -18,7 +18,6 @@ const appReducer = combineReducers({
 
 const rootReducer = (state: ReturnType<typeof appReducer> | undefined, action: UnknownAction) => {
   if (action.type === 'auth/logout') {
-    // Preserve system config (e.g. backend URL and health status) while wiping all user session data
     const preservedConfig = state?.config;
     state = undefined;
     const nextState = appReducer(state, action);

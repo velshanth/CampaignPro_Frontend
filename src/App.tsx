@@ -27,7 +27,6 @@ const MainApp: React.FC = () => {
   const { isAuthenticated, user } = useAppSelector((state) => state.auth);
   const { selectedCampaign } = useAppSelector((state) => state.campaigns);
 
-  // Background campaign scheduler that automatically fires scheduled emails when their time arrives
   useTimer();
 
   const isAdmin = user?.role === 'ADMIN';
@@ -44,7 +43,6 @@ const MainApp: React.FC = () => {
       dispatch(fetchTemplates());
       dispatch(fetchOverviewAnalytics());
       if (isAdmin && activeTab === 'campaigns') {
-        // default to dashboard for admins on fresh load
         setActiveTab('dashboard');
       }
     } else {

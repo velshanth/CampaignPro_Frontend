@@ -5,7 +5,6 @@ export interface UserDTO {
   fullName: string;
   role: 'USER' | 'ADMIN' | string;
   active: boolean;
-  profilePicture?: string;
   customFields?: Record<string, string>;
   campaignCount?: number;
   createdAt?: string;
@@ -105,7 +104,7 @@ export interface EmailDelivery {
   contactName?: string;
 }
 
-export type ActivityType = 'OPEN' | 'CLICK' | 'BOUNCE' | 'UNSUBSCRIBE';
+export type ActivityType = 'OPEN' | 'CLICK' | 'BOUNCE';
 
 export interface CampaignActivity {
   id: string;
@@ -114,8 +113,6 @@ export interface CampaignActivity {
   contactId: string;
   type: ActivityType;
   linkClicked?: string;
-  userAgent?: string;
-  ipAddress?: string;
   timestamp: string;
   contactEmail?: string;
   contactName?: string;
@@ -135,23 +132,4 @@ export interface AnalyticsDTO {
   openRate: number;
   clickRate: number;
   calculatedAt?: string;
-}
-
-export interface SystemLog {
-  id?: string;
-  level: 'INFO' | 'WARN' | 'ERROR';
-  message: string;
-  timestamp: string;
-  action?: string;
-  details?: string;
-  ip?: string;
-  service?: string;
-}
-
-export interface AdminDashboardData {
-  totalUsers: number;
-  activeUsers: number;
-  totalCampaigns: number;
-  sentCampaigns: number;
-  scheduledCampaigns: number;
 }

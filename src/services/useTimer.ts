@@ -3,11 +3,6 @@ import { useAppDispatch, useAppSelector } from '../store';
 import { checkDueScheduledCampaigns, fetchCampaignDetails, fetchCampaigns } from '../store/slices/campaignsSlice';
 import { fetchOverviewAnalytics } from '../store/slices/analyticsSlice';
 
-/**
- * Custom React hook that acts as the client-side Campaign Scheduler.
- * Periodically checks for any campaign whose scheduledTime has arrived and
- * dispatches it automatically, updating deliveries and analytics.
- */
 export function useTimer() {
   const dispatch = useAppDispatch();
   const { selectedCampaign } = useAppSelector((state) => state.campaigns);
@@ -18,7 +13,6 @@ export function useTimer() {
   }, [selectedCampaign]);
 
   useEffect(() => {
-    // Immediate check on mount
     const checkSchedule = async () => {
       try {
         const resultAction = await dispatch(checkDueScheduledCampaigns());
@@ -39,7 +33,6 @@ export function useTimer() {
 
     checkSchedule();
 
-    // Periodic check every 4 seconds
     const interval = setInterval(checkSchedule, 4000);
 
     return () => clearInterval(interval);

@@ -39,7 +39,6 @@ export const Analytics: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border-slate-200">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-slate-900">
@@ -74,7 +73,6 @@ export const Analytics: React.FC = () => {
         </h2>
 
         <div className="space-y-4">
-          {/* Step 1: Sent */}
           <div>
             <div className="flex justify-between text-xs mb-1">
               <span className="font-bold text-[#0A2540]">
@@ -89,7 +87,6 @@ export const Analytics: React.FC = () => {
             </div>
           </div>
 
-          {/* Step 2: Delivered */}
           <div>
             <div className="flex justify-between text-xs mb-1">
               <span className="font-bold text-emerald-800">
@@ -107,7 +104,6 @@ export const Analytics: React.FC = () => {
             </div>
           </div>
 
-          {/* Step 3: Opened */}
           <div>
             <div className="flex justify-between text-xs mb-1">
               <span className="font-bold text-emerald-700">
@@ -125,7 +121,6 @@ export const Analytics: React.FC = () => {
             </div>
           </div>
 
-          {/* Step 4: Clicked */}
           <div>
             <div className="flex justify-between text-xs mb-1">
               <span className="font-bold text-blue-900">
@@ -145,7 +140,6 @@ export const Analytics: React.FC = () => {
         </div>
       </div>
 
-      {/* Breakdown Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-xs">
           <div className="text-slate-500 mb-2">
@@ -212,6 +206,4 @@ export const Analytics: React.FC = () => {
     </div>
   );
 };
-
-export const AnalyticsView = Analytics;
 

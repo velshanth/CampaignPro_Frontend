@@ -62,9 +62,7 @@ export const Dashboard: React.FC<OverviewDashboardProps> = ({
         </div>
       </div>
 
-      {/* 4 Simple Stats Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {/* Total Campaigns */}
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
           <span className="text-xs text-slate-500 font-medium block mb-1">
             Total Campaigns
@@ -77,7 +75,6 @@ export const Dashboard: React.FC<OverviewDashboardProps> = ({
           </span>
         </div>
 
-        {/* Total Contacts */}
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
           <span className="text-xs text-slate-500 font-medium block mb-1">
             Total Contacts
@@ -90,7 +87,6 @@ export const Dashboard: React.FC<OverviewDashboardProps> = ({
           </span>
         </div>
 
-        {/* Emails Sent */}
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
           <span className="text-xs text-slate-500 font-medium block mb-1">
             Emails Sent
@@ -103,7 +99,6 @@ export const Dashboard: React.FC<OverviewDashboardProps> = ({
           </span>
         </div>
 
-        {/* Delivery Rate */}
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
           <span className="text-xs text-slate-500 font-medium block mb-1">
             Delivery Rate
@@ -117,9 +112,7 @@ export const Dashboard: React.FC<OverviewDashboardProps> = ({
         </div>
       </div>
 
-      {/* Main Grid: Recent Campaigns & Quick Shortcuts */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Recent Campaigns Table */}
         <div className="lg:col-span-2 bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden flex flex-col">
           <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
             <h2 className="text-sm font-bold text-slate-900">
@@ -207,7 +200,6 @@ export const Dashboard: React.FC<OverviewDashboardProps> = ({
           </div>
         </div>
 
-        {/* Quick Shortcuts */}
         <div className="space-y-3">
           <div
             onClick={() => onNavigateTab('contacts')}
@@ -251,6 +243,4 @@ export const Dashboard: React.FC<OverviewDashboardProps> = ({
     </div>
   );
 };
-
-export const OverviewDashboard = Dashboard;
 

@@ -10,8 +10,6 @@ import {
   EmailDelivery,
   CampaignActivity,
   AnalyticsDTO,
-  AdminDashboardData,
-  SystemLog,
 } from '../types';
 
 const TOKEN_KEY = 'campaignpro_jwt_token';
@@ -366,7 +364,6 @@ export class ApiService {
           await this.sendCampaign(campaign.id);
           dispatched.push(campaign.id);
         } catch {
-          // continue
         }
       }
       return dispatched;
@@ -379,23 +376,8 @@ export class ApiService {
     return await this.request<CampaignDTO>(`/api/campaigns/${id}/status`);
   }
 
-  public static async getCampaignHistory(): Promise<CampaignDTO[]> {
-    const res = await this.request<CampaignDTO[]>('/api/campaigns/history');
-    return Array.isArray(res) ? res : [];
-  }
-
   public static async getCampaignActivities(campaignId: string): Promise<CampaignActivity[]> {
     const res = await this.request<CampaignActivity[]>(`/api/campaigns/${campaignId}/activities`);
-    return Array.isArray(res) ? res : [];
-  }
-
-  public static async getCampaignOpens(campaignId: string): Promise<CampaignActivity[]> {
-    const res = await this.request<CampaignActivity[]>(`/api/campaigns/${campaignId}/activities/opens`);
-    return Array.isArray(res) ? res : [];
-  }
-
-  public static async getCampaignClicks(campaignId: string): Promise<CampaignActivity[]> {
-    const res = await this.request<CampaignActivity[]>(`/api/campaigns/${campaignId}/activities/clicks`);
     return Array.isArray(res) ? res : [];
   }
 
@@ -404,86 +386,17 @@ export class ApiService {
     return Array.isArray(res) ? res : [];
   }
 
-  public static async getDeliveryStatus(id: string): Promise<EmailDelivery> {
-    return await this.request<EmailDelivery>(`/api/emails/deliveries/${id}`);
-  }
-
   public static async retryFailedEmails(campaignId: string): Promise<void> {
     await this.request(`/api/emails/retry?campaignId=${encodeURIComponent(campaignId)}`, {
       method: 'POST',
     });
   }
 
-  public static async getBouncedEmails(): Promise<EmailDelivery[]> {
-    const res = await this.request<EmailDelivery[]>('/api/emails/bounces');
-    return Array.isArray(res) ? res : [];
-  }
-
   public static async getOverviewAnalytics(): Promise<AnalyticsDTO> {
     return await this.request<AnalyticsDTO>('/api/analytics/overview');
   }
 
-  public static async getAllCampaignAnalytics(): Promise<AnalyticsDTO[]> {
-    const res = await this.request<AnalyticsDTO[]>('/api/analytics/campaigns');
-    return Array.isArray(res) ? res : [];
-  }
-
   public static async getCampaignAnalytics(campaignId: string): Promise<AnalyticsDTO> {
     return await this.request<AnalyticsDTO>(`/api/analytics/${campaignId}`);
-  }
-
-  public static async getPerformanceTrends(): Promise<Record<string, any>> {
-    return await this.request<Record<string, any>>('/api/analytics/trends');
-  }
-
-  public static async generateReports(): Promise<Record<string, any>> {
-    return await this.request<Record<string, any>>('/api/analytics/reports');
-  }
-
-  public static async getAdminDashboard(): Promise<AdminDashboardData> {
-    return await this.request<AdminDashboardData>('/api/admin/dashboard');
-  }
-
-  public static async getAdminUsers(): Promise<any[]> {
-    const res = await this.request<any[]>('/api/admin/users');
-    return Array.isArray(res) ? res : [];
-  }
-
-  public static async getAdminCampaigns(): Promise<any[]> {
-    const res = await this.request<any[]>('/api/admin/campaigns');
-    return Array.isArray(res) ? res : [];
-  }
-
-  public static async getAdminActivities(): Promise<any[]> {
-    const res = await this.request<any[]>('/api/admin/activities');
-    return Array.isArray(res) ? res : [];
-  }
-
-  public static async getAdminAnalytics(): Promise<AnalyticsDTO> {
-    return await this.request<AnalyticsDTO>('/api/admin/analytics');
-  }
-
-  public static async getAdminLogs(): Promise<any[]> {
-    const res = await this.request<any[]>('/api/admin/logs');
-    return Array.isArray(res) ? res : [];
-  }
-
-  public static async getSystemLogs(): Promise<SystemLog[]> {
-    const logs = await this.getAdminLogs();
-    return logs.map((l: any, idx: number) => ({
-      id: l.id || `log_${idx}`,
-      level: l.level || 'INFO',
-      message: l.message || JSON.stringify(l),
-      timestamp: l.timestamp || new Date().toISOString(),
-      action: l.action,
-      details: l.details,
-      service: l.service,
-    }));
-  }
-
-  public static async trackActivity(campaignId: string, deliveryId: string, type: string, url?: string): Promise<void> {
-    const params = new URLSearchParams({ campaignId, deliveryId, type });
-    if (url) params.append('url', url);
-    await this.request(`/api/activities/track?${params.toString()}`, { method: 'POST' });
   }
 }

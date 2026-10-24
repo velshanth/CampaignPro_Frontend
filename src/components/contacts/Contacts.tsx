@@ -94,9 +94,7 @@ export const Contacts: React.FC = () => {
         </div>
       </div>
 
-      {/* Filter and Audience Segments Bar */}
       <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
-        {/* Audience Group Selector */}
         <div className="flex items-center gap-1 p-1 bg-slate-100/90 rounded-xl border border-slate-200 overflow-x-auto">
           <button
             onClick={() => dispatch(setSelectedGroup(null))}
@@ -274,7 +272,6 @@ export const Contacts: React.FC = () => {
         </div>
       </div>
 
-      {/* Selected Group Details & Management Drawer if Group is Selected */}
       {selectedGroup && (
         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between text-xs">
           <div>
@@ -297,7 +294,6 @@ export const Contacts: React.FC = () => {
         </div>
       )}
 
-      {/* Modals */}
       <AddContact
         isOpen={isContactModalOpen}
         contactToEdit={contactToEdit}
@@ -310,6 +306,4 @@ export const Contacts: React.FC = () => {
     </div>
   );
 };
-
-export const ContactManager = Contacts;
 

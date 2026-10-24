@@ -1,9 +1,5 @@
 import { CampaignDTO } from '../types';
 
-/**
- * Format a date string into a readable full date and time string:
- * e.g., "Oct 19, 2026, 05:30 PM"
- */
 export function formatDateTime(dateStr?: string | null): string {
   if (!dateStr) return '—';
   try {
@@ -22,10 +18,6 @@ export function formatDateTime(dateStr?: string | null): string {
   }
 }
 
-/**
- * Format only the time part:
- * e.g., "05:30 PM"
- */
 export function formatTimeOnly(dateStr?: string | null): string {
   if (!dateStr) return '—';
   try {
@@ -41,10 +33,6 @@ export function formatTimeOnly(dateStr?: string | null): string {
   }
 }
 
-/**
- * Get human-readable relative time and past/future status
- * e.g., "in 12m", "in 2h", "Due now", "Passed 5m ago"
- */
 export function formatRelativeTime(dateStr?: string | null): { text: string; isPast: boolean; isDueNow: boolean } {
   if (!dateStr) return { text: 'Not scheduled', isPast: false, isDueNow: false };
   try {
@@ -54,7 +42,6 @@ export function formatRelativeTime(dateStr?: string | null): { text: string; isP
     const now = Date.now();
     const diffMs = target - now;
 
-    // Within 30 seconds of due or overdue by less than 2 minutes:
     if (diffMs <= 0 && diffMs > -60000) {
       return { text: 'Due now (dispatching)', isPast: true, isDueNow: true };
     }
@@ -86,10 +73,6 @@ export function formatRelativeTime(dateStr?: string | null): { text: string; isP
   }
 }
 
-/**
- * Safely extracts the scheduled time from a campaign object,
- * checking scheduledTime, scheduledAt, or nested attributes.
- */
 export function getCampaignScheduledTime(camp?: CampaignDTO | null): string | null {
   if (!camp) return null;
   return camp.scheduledTime || (camp as any).scheduledAt || (camp as any).scheduled_time || null;

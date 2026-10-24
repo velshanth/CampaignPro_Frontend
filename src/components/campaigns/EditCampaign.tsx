@@ -167,7 +167,6 @@ export const EditCampaign: React.FC<CampaignEditModalProps> = ({
       groupIds = targetGroup && targetGroup !== 'ALL' ? [targetGroup] : [];
     }
 
-    // Scheduling validation
     if (!isSent && dispatchAction === 'schedule') {
       if (!scheduledDateTime) {
         setFormError('Please select a valid scheduled date and time.');
@@ -194,7 +193,6 @@ export const EditCampaign: React.FC<CampaignEditModalProps> = ({
       const updatedScheduleTime =
         dispatchAction === 'schedule' ? new Date(scheduledDateTime).toISOString() : null;
 
-      // 1. Update basic campaign fields
       await dispatch(
         updateCampaign({
           id: campaign.id,
@@ -211,7 +209,6 @@ export const EditCampaign: React.FC<CampaignEditModalProps> = ({
         })
       ).unwrap();
 
-      // 2. Handle dispatch action transitions
       if (!isSent) {
         if (dispatchAction === 'immediate') {
           await dispatch(sendCampaign(campaign.id)).unwrap();
@@ -237,7 +234,6 @@ export const EditCampaign: React.FC<CampaignEditModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
       <div className="bg-white rounded-2xl shadow-xl max-w-xl w-full border border-slate-200 overflow-hidden flex flex-col max-h-[92vh]">
-        {/* Header */}
         <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/80">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center">
@@ -286,7 +282,6 @@ export const EditCampaign: React.FC<CampaignEditModalProps> = ({
         )}
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4 text-xs overflow-y-auto">
-          {/* Campaign Name */}
           <div>
             <label className="font-bold text-slate-700 block mb-1">
               Campaign Name *
@@ -301,7 +296,6 @@ export const EditCampaign: React.FC<CampaignEditModalProps> = ({
             />
           </div>
 
-          {/* Select Recipient Group */}
           {!isSent ? (
             <div>
               <label className="font-bold text-slate-700 block mb-1">
@@ -329,7 +323,6 @@ export const EditCampaign: React.FC<CampaignEditModalProps> = ({
             </div>
           )}
 
-          {/* Select Template (OPTIONAL) */}
           <div className="bg-slate-50/70 p-3.5 rounded-xl border border-slate-200/80 space-y-2">
             <div className="flex items-center justify-between">
               <label className="font-bold text-slate-700 flex items-center gap-1.5">
@@ -383,7 +376,6 @@ export const EditCampaign: React.FC<CampaignEditModalProps> = ({
             />
           </div>
 
-          {/* Email Content / Body */}
           <div>
             <label className="font-bold text-slate-700 block mb-1">
               Email Content / Body *
@@ -398,7 +390,6 @@ export const EditCampaign: React.FC<CampaignEditModalProps> = ({
             />
           </div>
 
-          {/* Dispatch Options for Draft / Scheduled campaigns */}
           {!isSent && (
             <div className="space-y-2 pt-2 border-t border-slate-100">
               <label className="font-bold text-slate-700 block">
@@ -482,7 +473,6 @@ export const EditCampaign: React.FC<CampaignEditModalProps> = ({
             </div>
           )}
 
-          {/* Action Buttons */}
           <div className="pt-4 flex items-center justify-end gap-2 border-t border-slate-100">
             <button
               type="button"

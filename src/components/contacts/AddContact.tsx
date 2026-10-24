@@ -123,7 +123,6 @@ export const AddContact: React.FC<ContactModalProps> = ({
           </div>
         )}
 
-        {/* Clean, Simple Form */}
         <form onSubmit={handleSubmit} className="p-6 space-y-3.5 text-xs">
           <div className="grid grid-cols-2 gap-3">
             <div>

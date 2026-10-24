@@ -5,7 +5,6 @@ import path from 'path';
 
 const defaultTarget = process.env.VITE_API_URL || 'https://campaignpro-backend-3dsw.onrender.com';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
@@ -21,19 +20,6 @@ export default defineConfig({
     watch: process.env.DISABLE_HMR === 'true' ? null : {},
     proxy: {
       '/api': {
-        target: defaultTarget,
-        changeOrigin: true,
-        secure: true,
-        configure: (proxy) => {
-          proxy.on('error', (err, _req, res) => {
-            if ('writeHead' in res && !res.headersSent) {
-              res.writeHead(503, { 'Content-Type': 'application/json' });
-              res.end(JSON.stringify({ message: 'Backend service unreachable', error: err.message }));
-            }
-          });
-        },
-      },
-      '/actuator': {
         target: defaultTarget,
         changeOrigin: true,
         secure: true,

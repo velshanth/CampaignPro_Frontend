@@ -39,9 +39,7 @@ export const Navbar: React.FC<HeaderProps> = ({
     <header className="sticky top-0 z-40 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Left: Brand Logo & Top Navigation */}
           <div className="flex items-center gap-8">
-            {/* Brand Logo */}
             <button
               onClick={() => setActiveTab(isAdmin ? 'dashboard' : 'campaigns')}
               className="flex items-center shrink-0 hover:opacity-90 transition-opacity"
@@ -49,7 +47,6 @@ export const Navbar: React.FC<HeaderProps> = ({
               <Logo size="md" theme="light" showWordmark={true} />
             </button>
 
-            {/* Top Navigation Menu Bar */}
             <nav className="hidden md:flex items-center gap-1 lg:gap-2">
               {navItems.map((item) => {
                 const isActive = activeTab === item.id;
@@ -81,9 +78,7 @@ export const Navbar: React.FC<HeaderProps> = ({
             </nav>
           </div>
 
-          {/* Right: Actions (New Campaign Button + User Profile) */}
           <div className="flex items-center gap-3">
-            {/* Simple New Campaign Button */}
             <button
               onClick={onOpenNewCampaign}
               className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 rounded-lg shadow-xs transition-colors whitespace-nowrap"
@@ -92,7 +87,6 @@ export const Navbar: React.FC<HeaderProps> = ({
               <span>New Campaign</span>
             </button>
 
-            {/* User Dropdown */}
             <div className="relative">
               <button
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
@@ -110,7 +104,6 @@ export const Navbar: React.FC<HeaderProps> = ({
                 <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
               </button>
 
-              {/* Dropdown Menu */}
               {userMenuOpen && (
                 <>
                   <div
@@ -166,7 +159,6 @@ export const Navbar: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* Mobile Sub-Navigation Bar */}
       <div className="md:hidden flex items-center overflow-x-auto px-4 py-2 border-t border-slate-100 gap-1.5 bg-slate-50">
         {navItems.map((item) => (
           <button

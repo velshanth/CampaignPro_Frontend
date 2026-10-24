@@ -146,12 +146,9 @@ export const Login: React.FC = () => {
         </div>
       </header>
 
-      {/* Main Container */}
       <main className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-md">
-          {/* Card */}
           <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-            {/* Header with Title and Mode Switcher */}
             <div className="p-6 pb-4 border-b border-slate-100">
               <h1 className="text-xl font-bold text-slate-900 tracking-tight">
                 {isLoginMode ? 'Welcome back' : 'Create an account'}
@@ -162,34 +159,48 @@ export const Login: React.FC = () => {
                   : 'Register a new account to start managing campaigns.'}
               </p>
 
-              {/* Segmented Switcher */}
               <div className="grid grid-cols-2 gap-1 p-1 bg-slate-100 rounded-xl mt-5">
                 <button
                   type="button"
                   onClick={() => handleTabSwitch('login')}
-                  className={`py-2 text-xs font-semibold rounded-lg transition-all ${
-                    isLoginMode
+                  className={`py-2 text-xs font-semibold rounded-lg transition-all ${isLoginMode
                       ? 'bg-white text-slate-900 shadow-xs'
                       : 'text-slate-600 hover:text-slate-900'
-                  }`}
+                    }`}
                 >
                   Sign In
                 </button>
                 <button
                   type="button"
                   onClick={() => handleTabSwitch('register')}
-                  className={`py-2 text-xs font-semibold rounded-lg transition-all ${
-                    !isLoginMode
+                  className={`py-2 text-xs font-semibold rounded-lg transition-all ${!isLoginMode
                       ? 'bg-white text-slate-900 shadow-xs'
                       : 'text-slate-600 hover:text-slate-900'
-                  }`}
+                    }`}
                 >
                   Register
                 </button>
               </div>
             </div>
+            <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+              <h3 className="text-sm font-semibold text-emerald-800">
+                Demo Admin Credentials
+              </h3>
+              <p className="mt-1 text-xs text-emerald-700">
+                Use these credentials to test the application.
+              </p>
 
-            {/* Error Message */}
+              <div className="mt-3 space-y-2 text-sm">
+                <p>
+                  <span className="font-medium">Username:</span>{" "}
+                  <span className="font-mono">testuser02</span>
+                </p>
+                <p>
+                  <span className="font-medium">Password:</span>{" "}
+                  <span className="font-mono">Password123!</span>
+                </p>
+              </div>
+            </div>
             {activeError && (
               <div className="p-4 bg-rose-50 border-b border-rose-100 text-xs text-rose-700 flex items-start gap-2.5">
                 <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-rose-600" />
@@ -200,10 +211,8 @@ export const Login: React.FC = () => {
               </div>
             )}
 
-            {/* Form Body */}
             <div className="p-6">
               {isLoginMode ? (
-                /* ================= SIGN IN FORM ================= */
                 <form onSubmit={handleLoginSubmit} className="space-y-4">
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1.5">
@@ -302,7 +311,6 @@ export const Login: React.FC = () => {
                   </div>
                 </form>
               ) : (
-                /* ================= CREATE ACCOUNT FORM ================= */
                 <form onSubmit={handleRegisterSubmit} className="space-y-3.5">
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1">

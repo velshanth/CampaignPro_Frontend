@@ -58,7 +58,6 @@ export const CampaignDetails: React.FC<CampaignDetailViewProps> = ({
 
   return (
     <div className="space-y-6">
-      {/* Top Breadcrumb & Actions Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200">
         <div className="flex items-center gap-3">
           <button
@@ -139,7 +138,6 @@ export const CampaignDetails: React.FC<CampaignDetailViewProps> = ({
         </div>
       </div>
 
-      {/* Scheduled Campaign Information Banner */}
       {campaign.status === 'SCHEDULED' && (
         <div className="bg-gradient-to-r from-blue-50 via-indigo-50/60 to-blue-50 border border-blue-200/90 rounded-2xl p-4 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-start gap-3.5">
@@ -242,7 +240,6 @@ export const CampaignDetails: React.FC<CampaignDetailViewProps> = ({
         </div>
       </div>
 
-      {/* Email Deliveries Section */}
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-2 border-b border-slate-200">
           <div>
@@ -254,7 +251,6 @@ export const CampaignDetails: React.FC<CampaignDetailViewProps> = ({
             </p>
           </div>
 
-          {/* Status filters */}
           <div className="flex items-center gap-1.5 flex-wrap">
             <span className="text-xs font-semibold text-slate-500 mr-1">Filter:</span>
             {(['ALL', 'SCHEDULED', 'DELIVERED', 'SENT', 'FAILED', 'PENDING'] as const).map((st) => (

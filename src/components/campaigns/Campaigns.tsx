@@ -121,7 +121,6 @@ export const Campaigns: React.FC<CampaignListProps> = ({
         </div>
       </div>
 
-      {/* Campaigns Data Table */}
       <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
@@ -342,7 +341,6 @@ export const Campaigns: React.FC<CampaignListProps> = ({
         </div>
       </div>
 
-      {/* Confirmation Modal for Immediate Send */}
       {confirmSendId && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A2540]/60 backdrop-blur-xs">
           <div className="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 border border-slate-200">

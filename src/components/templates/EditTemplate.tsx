@@ -103,9 +103,7 @@ export const EditTemplate: React.FC<TemplateEditorModalProps> = ({
           </div>
         )}
 
-        {/* Clean, Simple Form */}
         <form onSubmit={handleSubmit} className="p-6 overflow-y-auto space-y-4 text-xs">
-          {/* Template Name */}
           <div>
             <label className="font-bold text-slate-700 block mb-1">
               Template Name *
@@ -120,7 +118,6 @@ export const EditTemplate: React.FC<TemplateEditorModalProps> = ({
             />
           </div>
 
-          {/* Subject Line */}
           <div>
             <label className="font-bold text-slate-700 block mb-1">
               Subject Line *
@@ -135,7 +132,6 @@ export const EditTemplate: React.FC<TemplateEditorModalProps> = ({
             />
           </div>
 
-          {/* Email Body */}
           <div>
             <label className="font-bold text-slate-700 block mb-1">
               Email Message *
@@ -150,7 +146,6 @@ export const EditTemplate: React.FC<TemplateEditorModalProps> = ({
             />
           </div>
 
-          {/* Action Buttons */}
           <div className="pt-3 flex items-center justify-end gap-2 border-t border-slate-100">
             <button
               type="button"

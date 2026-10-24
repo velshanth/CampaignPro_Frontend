@@ -34,7 +34,6 @@ export const AddCampaign: React.FC<CampaignWizardModalProps> = ({
     new Map([...defaultTemplates, ...templates].map((t) => [t.id, t])).values()
   );
 
-  // Helper to format local date/time + 1 minute for the HTML input min attribute (YYYY-MM-DDTHH:mm)
   const getMinDateTimeLocal = () => {
     const now = new Date();
     now.setMinutes(now.getMinutes() + 1);
@@ -68,7 +67,6 @@ export const AddCampaign: React.FC<CampaignWizardModalProps> = ({
           setBody('');
         }
       } else {
-        // Template is optional by default
         setSelectedTemplateId('');
         setSubject('');
         setBody('');
@@ -117,18 +115,15 @@ export const AddCampaign: React.FC<CampaignWizardModalProps> = ({
       return;
     }
 
-    // Determine target contacts from group
     const targetGroup = selectedGroupName;
     const targetContactIds = targetGroup === 'ALL'
       ? contacts.map((c) => c.id)
       : contacts.filter((c) => c.groups?.includes(targetGroup)).map((c) => c.id);
 
     if (targetContactIds.length === 0 && contacts.length > 0) {
-      // Default to first contact if group is empty
       targetContactIds.push(contacts[0].id);
     }
 
-    // Strict validation: Campaign cannot be scheduled in the past
     if (dispatchType === 'schedule') {
       if (!scheduledDateTime) {
         setFormError('Please select a valid scheduled date and time.');
@@ -177,8 +172,6 @@ export const AddCampaign: React.FC<CampaignWizardModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
       <div className="bg-white rounded-2xl shadow-xl max-w-xl w-full border border-slate-200 overflow-hidden flex flex-col max-h-[92vh]">
-        
-        {/* Header */}
         <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/80">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center">
@@ -209,7 +202,6 @@ export const AddCampaign: React.FC<CampaignWizardModalProps> = ({
         )}
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4 text-xs overflow-y-auto">
-          {/* Campaign Name */}
           <div>
             <label className="font-bold text-slate-700 block mb-1">
               Campaign Name *
@@ -224,7 +216,6 @@ export const AddCampaign: React.FC<CampaignWizardModalProps> = ({
             />
           </div>
 
-          {/* Select Recipient Group */}
           <div>
             <label className="font-bold text-slate-700 block mb-1">
               Send To Group *
@@ -243,7 +234,6 @@ export const AddCampaign: React.FC<CampaignWizardModalProps> = ({
             </select>
           </div>
 
-          {/* Select Template (OPTIONAL) */}
           <div className="bg-slate-50/70 p-3.5 rounded-xl border border-slate-200/80 space-y-2">
             <div className="flex items-center justify-between">
               <label className="font-bold text-slate-700 flex items-center gap-1.5">
@@ -297,7 +287,6 @@ export const AddCampaign: React.FC<CampaignWizardModalProps> = ({
             />
           </div>
 
-          {/* Email Content / Body */}
           <div>
             <label className="font-bold text-slate-700 block mb-1">
               Email Content / Body *
@@ -313,7 +302,6 @@ export const AddCampaign: React.FC<CampaignWizardModalProps> = ({
             />
           </div>
 
-          {/* Send Option */}
           <div className="space-y-2 pt-2 border-t border-slate-100">
             <label className="font-bold text-slate-700 block">
               When to Send:
@@ -394,7 +382,6 @@ export const AddCampaign: React.FC<CampaignWizardModalProps> = ({
             </div>
           </div>
 
-          {/* Buttons */}
           <div className="pt-4 flex items-center justify-end gap-2 border-t border-slate-100">
             <button
               type="button"

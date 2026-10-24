@@ -55,14 +55,12 @@ export const Templates: React.FC<TemplateManagerProps> = ({
         </button>
       </div>
 
-      {/* Grid of Templates */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {allTemplates.map((tmpl) => (
           <div
             key={tmpl.id}
             className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs hover:border-slate-300 hover:shadow-xs transition-all flex flex-col justify-between overflow-hidden group"
           >
-            {/* Card Content */}
             <div className="p-5 space-y-3">
               <div className="flex items-start justify-between gap-2">
                 <h3 className="text-sm font-bold text-[#0A2540] group-hover:text-emerald-700 transition-colors">
@@ -101,7 +99,6 @@ export const Templates: React.FC<TemplateManagerProps> = ({
                 <span className="font-medium text-slate-800">{tmpl.subject}</span>
               </div>
 
-              {/* Simple message preview snippet */}
               <div className="pt-2 border-t border-slate-100">
                 <p className="text-xs text-slate-500 line-clamp-3 leading-relaxed">
                   {tmpl.body.replace(/<[^>]*>?/gm, '')}
@@ -112,7 +109,6 @@ export const Templates: React.FC<TemplateManagerProps> = ({
         ))}
       </div>
 
-      {/* Modals */}
       <EditTemplate
         isOpen={isEditorOpen}
         templateToEdit={templateToEdit}
@@ -121,6 +117,4 @@ export const Templates: React.FC<TemplateManagerProps> = ({
     </div>
   );
 };
-
-export const TemplateManager = Templates;
 
