@@ -37,7 +37,6 @@ export const Templates: React.FC<TemplateManagerProps> = ({
             Email Templates
           </h1>
           <div className="flex items-center gap-2 text-xs text-slate-500 mt-1">
-            <span>Dynamic HTML & Plain text email layouts</span>
             <span aria-hidden="true">·</span>
             <span className="font-mono tabular-nums">{allTemplates.length} templates available</span>
           </div>

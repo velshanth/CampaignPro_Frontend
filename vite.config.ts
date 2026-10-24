@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 
-const defaultTarget = process.env.VITE_API_URL;
+const defaultTarget = process.env.VITE_API_URL || "https://campaignpro-backend-3dsw.onrender.com";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
