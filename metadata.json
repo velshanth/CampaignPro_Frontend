@@ -1,0 +1,6 @@
+{
+  "name": "CampaignPro — Enterprise Email Campaign Manager",
+  "description": "Production-grade frontend for CampaignPro email campaign platform. Connects to Spring Boot & MongoDB backend to manage contacts, email templates, bulk sending, delivery tracking, and performance analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
