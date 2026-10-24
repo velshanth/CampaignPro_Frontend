@@ -5,20 +5,16 @@ import { Logo } from './Logo';
 import {
   LogOut,
   ChevronDown,
-  Plus,
-  Shield
 } from 'lucide-react';
 
 interface HeaderProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
-  onOpenNewCampaign: () => void;
 }
 
 export const Navbar: React.FC<HeaderProps> = ({
   activeTab,
   setActiveTab,
-  onOpenNewCampaign,
 }) => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.auth);
@@ -79,14 +75,6 @@ export const Navbar: React.FC<HeaderProps> = ({
           </div>
 
           <div className="flex items-center gap-3">
-            <button
-              onClick={onOpenNewCampaign}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 rounded-lg shadow-xs transition-colors whitespace-nowrap"
-            >
-              <Plus className="w-4 h-4" />
-              <span>New Campaign</span>
-            </button>
-
             <div className="relative">
               <button
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
@@ -177,5 +165,3 @@ export const Navbar: React.FC<HeaderProps> = ({
     </header>
   );
 };
-
-export const Header = Navbar;

@@ -4,9 +4,6 @@ import { fetchOverviewAnalytics } from '../../store/slices/analyticsSlice';
 import { fetchCampaigns } from '../../store/slices/campaignsSlice';
 import { fetchContactsAndGroups } from '../../store/slices/contactsSlice';
 import {
-  CheckCircle,
-  Eye,
-  MousePointer,
   Users,
   FileText,
   Plus,
@@ -106,9 +103,6 @@ export const Dashboard: React.FC<OverviewDashboardProps> = ({
           <div className="text-2xl font-bold text-blue-700">
             {(overview?.deliveryRate != null ? Number(overview.deliveryRate) : 100).toFixed(2)}%
           </div>
-          <span className="text-[11px] text-slate-400 mt-1 block">
-            {(overview?.openRate != null ? Number(overview.openRate) : 0).toFixed(2)}% open rate
-          </span>
         </div>
       </div>
 

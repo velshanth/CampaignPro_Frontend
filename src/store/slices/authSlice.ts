@@ -75,7 +75,6 @@ const authSlice = createSlice({
       ApiService.clearToken();
       sessionStorage.removeItem('campaignpro_session_user');
       sessionStorage.removeItem('campaignpro_session_token');
-      localStorage.removeItem('campaignpro_cached_user');
       state.user = null;
       state.token = null;
       state.isAuthenticated = false;

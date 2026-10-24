@@ -414,5 +414,3 @@ export const AddCampaign: React.FC<CampaignWizardModalProps> = ({
   );
 };
 
-export const CampaignWizardModal = AddCampaign;
-

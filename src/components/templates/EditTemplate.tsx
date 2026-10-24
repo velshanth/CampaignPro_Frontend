@@ -167,5 +167,3 @@ export const EditTemplate: React.FC<TemplateEditorModalProps> = ({
   );
 };
 
-export const TemplateEditorModal = EditTemplate;
-

@@ -39,5 +39,3 @@ export function useTimer() {
   }, [dispatch]);
 }
 
-export const useCampaignScheduler = useTimer;
-

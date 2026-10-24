@@ -119,5 +119,3 @@ export const AddGroup: React.FC<GroupModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export const GroupModal = AddGroup;
-

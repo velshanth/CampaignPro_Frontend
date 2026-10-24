@@ -375,5 +375,3 @@ export const CampaignDetails: React.FC<CampaignDetailViewProps> = ({
     );
   };
 
-  export const CampaignDetailView = CampaignDetails;
-

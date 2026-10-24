@@ -231,5 +231,3 @@ export const AddContact: React.FC<ContactModalProps> = ({
   );
 };
 
-export const ContactModal = AddContact;
-
