@@ -53,8 +53,13 @@ export const AddContact: React.FC<ContactModalProps> = ({
       return;
     }
 
+    if (!selectedGroup) {
+      setError('Please select a group. Group is mandatory.');
+      return;
+    }
+
     try {
-      const groupList = selectedGroup ? [selectedGroup] : [];
+      const groupList = [selectedGroup];
       if (contactToEdit) {
         await dispatch(
           updateContact({
@@ -179,14 +184,15 @@ export const AddContact: React.FC<ContactModalProps> = ({
 
           <div>
             <label className="font-bold text-slate-700 block mb-1">
-              Assign to Group
+              Assign to Group *
             </label>
             <select
+              required
               value={selectedGroup}
               onChange={(e) => setSelectedGroup(e.target.value)}
-              className="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 text-xs text-slate-900"
+              className="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 text-xs text-slate-900 font-medium"
             >
-              <option value="">-- No Group --</option>
+              <option value="">-- Select a Group (Required) --</option>
               {groups.map((g) => (
                 <option key={g.id} value={g.name}>
                   {g.name}
