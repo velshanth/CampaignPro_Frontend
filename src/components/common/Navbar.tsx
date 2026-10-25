@@ -10,11 +10,13 @@ import {
 interface HeaderProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
+  onOpenNewCampaign?: () => void;
 }
 
 export const Navbar: React.FC<HeaderProps> = ({
   activeTab,
   setActiveTab,
+  onOpenNewCampaign,
 }) => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.auth);

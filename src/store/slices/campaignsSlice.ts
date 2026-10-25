@@ -232,10 +232,12 @@ const campaignsSlice = createSlice({
       })
       .addCase(fetchCampaignDetails.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.selectedCampaign = action.payload.campaign;
-        state.deliveries = Array.isArray(action.payload.deliveries) ? action.payload.deliveries : [];
-        state.activities = Array.isArray(action.payload.activities) ? action.payload.activities : [];
-        state.campaignAnalytics = action.payload.analytics;
+        if (state.selectedCampaign && state.selectedCampaign.id === action.payload?.campaign?.id) {
+          state.selectedCampaign = action.payload.campaign;
+        }
+        state.deliveries = Array.isArray(action.payload?.deliveries) ? action.payload.deliveries : [];
+        state.activities = Array.isArray(action.payload?.activities) ? action.payload.activities : [];
+        state.campaignAnalytics = action.payload?.analytics || null;
       })
       .addCase(fetchCampaignDetails.rejected, (state, action) => {
         state.isLoading = false;

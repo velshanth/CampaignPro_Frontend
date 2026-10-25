@@ -38,6 +38,7 @@ export interface ContactDTO {
   phone?: string;
   groups?: string[];
   customFields?: Record<string, string>;
+  active?: boolean;
   createdAt?: string;
   updatedAt?: string;
 }

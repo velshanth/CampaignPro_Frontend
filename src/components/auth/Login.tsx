@@ -182,25 +182,6 @@ export const Login: React.FC = () => {
                 </button>
               </div>
             </div>
-            <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-4">
-              <h3 className="text-sm font-semibold text-emerald-800">
-                Demo Admin Credentials
-              </h3>
-              <p className="mt-1 text-xs text-emerald-700">
-                Use these credentials to test the application.
-              </p>
-
-              <div className="mt-3 space-y-2 text-sm">
-                <p>
-                  <span className="font-medium">Username:</span>{" "}
-                  <span className="font-mono">testuser02</span>
-                </p>
-                <p>
-                  <span className="font-medium">Password:</span>{" "}
-                  <span className="font-mono">Password123!</span>
-                </p>
-              </div>
-            </div>
             {activeError && (
               <div className="p-4 bg-rose-50 border-b border-rose-100 text-xs text-rose-700 flex items-start gap-2.5">
                 <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-rose-600" />
@@ -214,6 +195,15 @@ export const Login: React.FC = () => {
             <div className="p-6">
               {isLoginMode ? (
                 <form onSubmit={handleLoginSubmit} className="space-y-4">
+                  {/* Demo Admin Credentials Simple Text UI */}
+                  <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700">
+                    <span className="font-bold text-slate-900 block mb-1">Demo Admin Credentials:</span>
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-600 font-mono text-[11px]">
+                      <span>Username: <strong className="text-slate-900">testuser02</strong></span>
+                      <span>Password: <strong className="text-slate-900">Password123!</strong></span>
+                    </div>
+                  </div>
+
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                       Username or Email

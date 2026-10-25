@@ -29,7 +29,7 @@ export const EditTemplate: React.FC<TemplateEditorModalProps> = ({
     } else {
       setName('');
       setSubject('');
-      setBody('Hello,\n\nThank you for connecting with us! We wanted to share an update with you.\n\nPlease feel free to reply if you have any questions.\n\nBest regards,\nThe Team');
+      setBody('');
     }
     setError(null);
   }, [templateToEdit, isOpen]);

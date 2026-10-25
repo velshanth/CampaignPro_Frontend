@@ -60,6 +60,14 @@ const MainApp: React.FC = () => {
     }
   }, [isAdmin, activeTab]);
 
+  useEffect(() => {
+    const handlePopState = () => {
+      dispatch(clearSelectedCampaign());
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [dispatch]);
+
   if (!isAuthenticated) {
     return <Login />;
   }
@@ -74,6 +82,7 @@ const MainApp: React.FC = () => {
   };
 
   const handleViewCampaign = (campaign: CampaignDTO) => {
+    window.history.pushState({ view: 'campaign', id: campaign.id }, '');
     dispatch(setSelectedCampaign(campaign));
   };
 
@@ -85,12 +94,13 @@ const MainApp: React.FC = () => {
 
   const handleBackFromCampaign = () => {
     dispatch(clearSelectedCampaign());
+    if (window.history.state?.view === 'campaign') {
+      window.history.back();
+    }
   };
 
   const handleTabChange = (tab: string) => {
-    if (selectedCampaign) {
-      dispatch(clearSelectedCampaign());
-    }
+    dispatch(clearSelectedCampaign());
     if (!isAdmin && (tab === 'dashboard' || tab === 'analytics')) {
       setActiveTab('campaigns');
       return;
@@ -164,6 +174,8 @@ const MainApp: React.FC = () => {
           setCampaignInitialTemplateId(undefined);
         }}
         onSuccess={() => {
+          setIsNewCampaignOpen(false);
+          setCampaignInitialTemplateId(undefined);
           dispatch(fetchCampaigns());
           dispatch(fetchOverviewAnalytics());
         }}
@@ -174,6 +186,7 @@ const MainApp: React.FC = () => {
         campaign={editingCampaign}
         onClose={() => setEditingCampaign(null)}
         onSuccess={() => {
+          setEditingCampaign(null);
           dispatch(fetchCampaigns());
           dispatch(fetchOverviewAnalytics());
         }}
