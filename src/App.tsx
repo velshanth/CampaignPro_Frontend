@@ -20,14 +20,11 @@ import {
 import { fetchContactsAndGroups } from './store/slices/contactsSlice';
 import { fetchTemplates } from './store/slices/templatesSlice';
 import { fetchOverviewAnalytics } from './store/slices/analyticsSlice';
-import { useTimer } from './services/useTimer';
 
 const MainApp: React.FC = () => {
   const dispatch = useAppDispatch();
   const { isAuthenticated, user } = useAppSelector((state) => state.auth);
   const { selectedCampaign } = useAppSelector((state) => state.campaigns);
-
-  useTimer();
 
   const isAdmin = user?.role === 'ADMIN';
 

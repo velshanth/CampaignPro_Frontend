@@ -348,30 +348,6 @@ export class ApiService {
     await this.request(`/api/campaigns/${id}/cancel`, { method: 'POST' });
   }
 
-  public static async checkAndExecuteScheduledCampaigns(): Promise<string[]> {
-    try {
-      const campaigns = await this.getCampaigns();
-      const now = Date.now();
-      const due = campaigns.filter((c) => {
-        if (c.status !== 'SCHEDULED' || !c.scheduledTime) return false;
-        const t = new Date(c.scheduledTime).getTime();
-        return !isNaN(t) && t <= now;
-      });
-
-      const dispatched: string[] = [];
-      for (const campaign of due) {
-        try {
-          await this.sendCampaign(campaign.id);
-          dispatched.push(campaign.id);
-        } catch {
-        }
-      }
-      return dispatched;
-    } catch {
-      return [];
-    }
-  }
-
   public static async getCampaignStatus(id: string): Promise<CampaignDTO> {
     return await this.request<CampaignDTO>(`/api/campaigns/${id}/status`);
   }

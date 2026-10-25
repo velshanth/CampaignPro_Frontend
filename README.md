@@ -1,78 +1,68 @@
-# CampaignPro Frontend
+# CampaignPro - Frontend
 
-A simple, responsive web client for managing email campaigns, subscriber lists, and email templates. Built with React and Vite.
+This is the frontend application for CampaignPro, an email campaign management web app. It allows users to create email templates, organize contacts into groups, and send or schedule email campaigns.
+
+The app connects to a Spring Boot backend for authentication and data storage.
 
 ## Features
 
-- **Campaigns**: Create drafts, schedule deliveries, and send campaigns.
-- **Templates**: Rich email template creator with live mobile and desktop previews.
-- **Contacts**: Organize contacts and subscriber groups with CSV import/export.
-- **Analytics**: Track delivery stats, open rates, click rates, and bounces.
-- **Backend Toggle**: Connects directly to your Spring Boot REST backend (`http://localhost:8080`) or runs in local offline mode for testing.
+- User authentication (Login and Register with JWT)
+- Create and manage email templates
+- Add and edit contacts (assigning a group is mandatory)
+- Create campaigns by selecting a template and a target contact group
+- Send campaigns immediately or schedule them for a later time
+- View campaign details and delivery reports (delivered, opened, clicked, bounced)
+- Dashboard and analytics overview
 
-## Tech Stack
+## Demo Login
+
+You can use these credentials to test the project:
+
+- Username: testuser02
+- Password: Password123!
+
+Or you can register a new account from the Register tab.
+
+## Technologies Used
 
 - React 19
 - TypeScript
 - Vite
 - Tailwind CSS
 - Redux Toolkit
-- Lucide React
 
-## Setup & Running Locally
+## How to Run the Project Locally
 
-### Prerequisites
-- **Node.js**: v20.x or v22.x LTS recommended (check with `node -v`)
-- **npm**: v10+ (comes bundled with Node)
+### 1. Install dependencies
+```bash
+npm install
+```
 
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-2. **Start the development server**:
-   ```bash
-   npm run dev
-   ```
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-3. **Build for production**:
-   ```bash
-   npm run build
-   ```
-
-4. **Preview the production build**:
-   ```bash
-   npm run preview
-   ```
-
-## Deploying to Vercel
-
-This project includes a `vercel.json` configured for single-page application routing:
-
-1. Push your code to GitHub.
-2. Import the repository in [Vercel](https://vercel.com/new).
-3. Vercel automatically detects Vite:
-   - **Framework Preset**: Vite
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-4. Click **Deploy**.
-
-## Connecting to Backend
-
-The app connects to your Spring Boot REST API.
-
-### 1. In Local Development
-Set the backend URL in your `.env` file at the root of the project:
+### 2. Configure Backend URL
+Create a `.env` file in the root folder and add your backend address:
 ```env
 VITE_API_URL=http://localhost:8080
 ```
 
-### 2. When Deploying to Vercel
-In your Vercel project dashboard:
-1. Go to **Settings** > **Environment Variables**.
-2. Add a new variable:
-   - **Key**: `VITE_API_URL`
-   - **Value**: `https://your-production-backend-url.com`
-3. Check all environments (**Production**, **Preview**, **Development**) and click **Save**.
-4. Redeploy your project so Vite embeds the environment variable during build.
+### 3. Start the dev server
+```bash
+npm run dev
+```
+Open http://localhost:3000 in your browser.
+
+### 4. Build for Production
+```bash
+npm run build
+```
+
+## Project Structure
+
+- `src/components/auth`: Login and register screens
+- `src/components/campaigns`: Campaign list, create modal, edit modal, and details page
+- `src/components/contacts`: Contact management and group creation
+- `src/components/templates`: Template creation, list, and preview
+- `src/components/analytics`: Campaign performance and reports
+- `src/components/dashboard`: Main dashboard summary
+- `src/services/api.ts`: API service that handles HTTP requests to the backend
+- `src/store`: Redux Toolkit store and state slices
+- `src/types`: TypeScript types matching the backend DTOs

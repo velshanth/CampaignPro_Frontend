@@ -149,22 +149,6 @@ export const cancelCampaign = createAsyncThunk(
   }
 );
 
-export const checkDueScheduledCampaigns = createAsyncThunk(
-  'campaigns/checkDue',
-  async (_, { dispatch, getState }) => {
-    const dispatchedIds = await ApiService.checkAndExecuteScheduledCampaigns();
-    if (dispatchedIds.length > 0) {
-      await dispatch(fetchCampaigns());
-      const selected = (getState() as any).campaigns.selectedCampaign;
-      if (selected && dispatchedIds.includes(selected.id)) {
-        await dispatch(fetchCampaignDetails(selected.id));
-      }
-      return dispatchedIds;
-    }
-    return [];
-  }
-);
-
 export const retryFailedDeliveries = createAsyncThunk(
   'campaigns/retryFailed',
   async (campaignId: string, { dispatch, rejectWithValue }) => {
@@ -291,22 +275,6 @@ const campaignsSlice = createSlice({
         state.campaigns = state.campaigns.filter((c) => c.id !== action.payload);
         if (state.selectedCampaign?.id === action.payload) {
           state.selectedCampaign = null;
-        }
-      })
-      .addCase(checkDueScheduledCampaigns.fulfilled, (state, action) => {
-        const dispatchedIds = action.payload as string[];
-        if (dispatchedIds && dispatchedIds.length > 0) {
-          dispatchedIds.forEach((id) => {
-            const camp = state.campaigns.find((c) => c.id === id);
-            if (camp) {
-              camp.status = 'SENT';
-              camp.sentTime = new Date().toISOString();
-            }
-          });
-          if (state.selectedCampaign && dispatchedIds.includes(state.selectedCampaign.id)) {
-            state.selectedCampaign.status = 'SENT';
-            state.selectedCampaign.sentTime = new Date().toISOString();
-          }
         }
       });
   },
