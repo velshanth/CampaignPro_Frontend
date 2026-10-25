@@ -60,11 +60,6 @@ export const Contacts: React.FC = () => {
           <h1 className="text-2xl font-bold tracking-tight text-slate-900">
             Contacts
           </h1>
-          <div className="flex items-center gap-2 text-xs text-slate-500 mt-1">
-            <span className="font-mono tabular-nums">{contacts.length} total contacts</span>
-            <span aria-hidden="true">·</span>
-            <span className="font-mono tabular-nums">{groups.length} groups</span>
-          </div>
         </div>
 
         <div className="flex items-center gap-2 self-start sm:self-auto">
