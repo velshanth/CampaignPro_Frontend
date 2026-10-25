@@ -153,11 +153,6 @@ export const Login: React.FC = () => {
               <h1 className="text-xl font-bold text-slate-900 tracking-tight">
                 {isLoginMode ? 'Welcome back' : 'Create an account'}
               </h1>
-              <p className="text-xs text-slate-500 mt-1">
-                {isLoginMode
-                  ? 'Sign in to access your email campaigns and analytics.'
-                  : 'Register a new account to start managing campaigns.'}
-              </p>
 
               <div className="grid grid-cols-2 gap-1 p-1 bg-slate-100 rounded-xl mt-5">
                 <button

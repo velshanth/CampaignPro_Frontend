@@ -43,9 +43,6 @@ export const Dashboard: React.FC<OverviewDashboardProps> = ({
           <h1 className="text-2xl font-bold text-slate-900">
             Dashboard
           </h1>
-          <p className="text-xs text-slate-500 mt-1">
-            Overview of your campaigns, contacts, and delivery statistics
-          </p>
         </div>
 
         <div className="flex items-center gap-2">
